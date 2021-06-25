@@ -1,0 +1,17 @@
+E:\PROJECT\MovieProject\Common\bin\Debug\Common.dll
+E:\PROJECT\MovieProject\Common\bin\Debug\Common.pdb
+E:\PROJECT\MovieProject\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+E:\PROJECT\MovieProject\Common\obj\Debug\Common.dll
+E:\PROJECT\MovieProject\Common\obj\Debug\Common.pdb
+C:\Users\tuant\Desktop\TRANVANSON-10116282-TK14.4\MovieProject\Common\bin\Debug\Common.dll
+C:\Users\tuant\Desktop\TRANVANSON-10116282-TK14.4\MovieProject\Common\bin\Debug\Common.pdb
+C:\Users\tuant\Desktop\TRANVANSON-10116282-TK14.4\MovieProject\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\tuant\Desktop\TRANVANSON-10116282-TK14.4\MovieProject\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\tuant\Desktop\TRANVANSON-10116282-TK14.4\MovieProject\Common\obj\Debug\Common.dll
+C:\Users\tuant\Desktop\TRANVANSON-10116282-TK14.4\MovieProject\Common\obj\Debug\Common.pdb
+C:\Users\tuant\Desktop\MovieProject\MovieProject\Common\bin\Debug\Common.dll
+C:\Users\tuant\Desktop\MovieProject\MovieProject\Common\bin\Debug\Common.pdb
+C:\Users\tuant\Desktop\MovieProject\MovieProject\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\tuant\Desktop\MovieProject\MovieProject\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\tuant\Desktop\MovieProject\MovieProject\Common\obj\Debug\Common.dll
+C:\Users\tuant\Desktop\MovieProject\MovieProject\Common\obj\Debug\Common.pdb

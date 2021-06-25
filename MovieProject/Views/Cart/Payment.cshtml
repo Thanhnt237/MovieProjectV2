@@ -1,0 +1,96 @@
+﻿@model List<MovieProject.Models.CartItem>
+@{
+    ViewBag.Title = "Thanh toan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter{
+    <script src="/assets/web/js/controller/cartsController.js"></script>
+}
+
+@{
+    var session = (MovieProject.Common.UserLogin)Session[MovieProject.Common.CommonContants.USER_SESSION];
+}
+
+@if (session == null)
+{
+    <div class="alert alert-danger">Bạn cần đăng nhập để sử dụng tính năng này</div>
+}
+else
+{
+    <div class="container">
+        <div class="session group">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Mã sản phẩm</td>
+                        <td>Tên sản phẩm</td>
+                        <td>Ảnh sản phẩm</td>
+                        <td>Số lượng</td>
+                        <td>Đơn giá</td>
+                        <td>Thành tiền</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Movie.MovieID</td>
+                            <td>@item.Movie.Name</td>
+                            <td><img src="@item.Movie.Image" width="100" /></td>
+                            <td><input type="text" class="txtQuantity" data-id="@item.Movie.MovieID" value="@item.Quantity" disabled /></td>
+                            <td>75.000</td>
+                            <td class="price" id="price" value="@(item.Quantity*75000)">@(item.Quantity*75000)</td>
+                        </tr>
+                    }
+                </tbody>
+                <tr>
+                    <td>Mã giảm giá: <input name="coupon"/></td>
+                    <td><a class="btn btn-secondary" style="margin-top: 0px; width:80px; color: #cdc197; background:#231f20; font-weight:bold;"> Áp dụng </a></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Tổng tiền: <a id="totalPrice" class="price" value=""></a></td>
+                    <td></td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="section group">
+            <div class="col-md-6">
+                @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>Người đặt:</label>
+                        <input name="customerName" class="form-control" value="@session.Name" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label>Điện thoại:</label>
+                        <input name="customerPhone" class="form-control" value="@session.Phone" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input name="customerEmail" class="form-control" value="@session.Email" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label>Rạp:</label>
+                        <input name="cinema" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Thời gian:</label>
+                        <input name="time" class="form-control" />
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary">Đặt vé</button>
+                }
+            </div>
+        </div>
+    </div>
+
+
+}
+

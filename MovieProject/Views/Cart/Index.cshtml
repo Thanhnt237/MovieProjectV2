@@ -1,0 +1,70 @@
+﻿@model List<MovieProject.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter{
+    <script src="/assets/web/js/controller/cartsController.js"></script>
+}
+
+@{
+    var session = (MovieProject.Common.UserLogin)Session[MovieProject.Common.CommonContants.USER_SESSION];
+}
+
+@if (session == null)
+{
+    <div class="alert alert-danger">Bạn cần đăng nhập để sử dụng tính năng này</div>
+}
+else
+{
+    <div class="container">
+        <div class="session group">
+            @if (Model == null || Model.Count == 0)
+            {
+                <div class="alert alert-danger"> Chưa có sản phẩm nào trong giỏ hàng</div>
+            }
+            else
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Mã sản phẩm</td>
+                            <td>Tên sản phẩm</td>
+                            <td>Ảnh sản phẩm</td>
+                            <td>Số lượng</td>
+                            <td>Đơn giá</td>
+                            <td>Thành tiền</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Movie.MovieID</td>
+                                <td>@item.Movie.Name</td>
+                                <td><img src="@item.Movie.Image" width="100" /></td>
+                                <td><input type="text" class="txtQuantity" data-id="@item.Movie.MovieID" value="@item.Quantity" /></td>
+                                <td>75.000</td>
+                                <td class="price">@(item.Quantity*75000)</td>
+                                <td><a href="#" data-id="@item.Movie.MovieID" class="btn-delete">Xóa</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+                <button id="btnContinue" class="btn btn-secondary"> Tiếp tục mua hàng </button>
+                <button id="btnUpdate" class="btn btn-secondary"> Cập nhật giỏ hàng </button>
+                <button id="btnDeleteAll" class="btn btn-secondary"> Xóa giỏ hàng </button>
+                <button id="btnPayment" class="btn btn-secondary"> Thanh toán </button>
+
+            }
+        </div>
+
+    </div>
+
+
+}
+

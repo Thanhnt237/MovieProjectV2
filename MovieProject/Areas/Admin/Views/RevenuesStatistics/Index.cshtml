@@ -1,0 +1,59 @@
+﻿@using Common.ViewModels;
+@model IEnumerable<RevenuesStatisticViewModel>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section jsFooter{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="~/assets/admin/js/controller/RevenuesStatistic.js"></script>
+}
+
+<div class="main-content">
+    <center>
+        <div>
+            <h3 style="background-color:lavender">THỐNG KÊ DOANH THU </h3>
+        </div>
+    </center>
+
+
+    <div class="table-responsive table--no-card m-b-30">
+        <div class="table-responsive table-responsive-data2">
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+
+        <table class="table table-data2" id="myTable">
+            <tbody>
+                <canvas id="myChart" width="800px;" height="800px;"></canvas>
+
+                @if (@Model != null)
+                {
+                    var label = new[] { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" };
+                    var chartData = new decimal[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                    foreach (var item in Model)
+                    {
+                        chartData[item.Month] = item.Revenues;
+                    }
+
+                    var myChart = new Chart(width: 1000, height: 1000)
+                        .AddTitle("Thống kê doanh thu theo tháng")
+                        .AddSeries(
+                            name: "Thống kê doanh thu theo tháng",
+                            xValue: label,
+                            yValues: chartData)
+                        .Write();
+                
+                }
+                </tbody>
+            </table>
+            <ul class="pagination modal-6" style="width:250px">
+            </ul>
+        </div>
+    </div>

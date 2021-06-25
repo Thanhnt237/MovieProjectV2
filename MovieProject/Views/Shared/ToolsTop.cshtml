@@ -1,0 +1,24 @@
+﻿<div class="w3l_sign_in_register">
+    @{
+        var session = (MovieProject.Common.UserLogin)Session[MovieProject.Common.CommonContants.USER_SESSION];
+    }
+
+    @if (session == null)
+    {
+        <ul>
+            <li><a href="/dangnhap/">Đăng nhập</a></li>
+            <li><a href="/dangky/">Đăng ký</a></li>
+        </ul>
+    }
+    else
+    {
+
+        <i><strong>Xin Chào:</i><strong>@session.Name</strong>
+        <i>@Html.ActionLink("Đăng xuất", "Logout", "UserT")</i><br />
+        {Html.RenderAction("HeaderCart", "UserT");}
+
+    }
+
+</div>
+
+<div class="clearfix"> </div>
