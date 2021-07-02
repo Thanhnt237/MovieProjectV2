@@ -40,7 +40,6 @@ namespace MovieProject.Controllers
                 {
                     var orderDetail = new OrderDetail();
                     orderDetail.OrderID = id;
-                    orderDetail.MovieID = item.Movie.MovieID;
                     orderDetail.Price = 75000;
                     orderDetail.Quantity = item.Quantity;
                     detailDao.Insert(orderDetail);
